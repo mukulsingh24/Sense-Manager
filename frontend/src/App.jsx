@@ -1,10 +1,12 @@
 import { useState } from 'react'
-
+import Task from './components/task'
+import List from './components/tasklist'
 function App() {
 
   return (
     <div className="App">
-      <h1>This is a sample</h1>
+      <Task />
+      <List />
     </div>
   )
 }
