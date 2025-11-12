@@ -1,6 +1,6 @@
 import React from "react";
 
-function List (){
+function List (handleEdit,handleDelete){
     return(
         <div>
             <h1>My Tasks</h1>

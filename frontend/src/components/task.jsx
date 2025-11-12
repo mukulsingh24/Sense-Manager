@@ -1,7 +1,8 @@
 import { useState } from "react";
 
-function Task(){
-return(
+function Task(handleSubmit){
+    const[task,setTask] = useState("");
+    return(
         <div>
             <h1>Task Manager</h1>
             <input type="text" placeholder="Enter Your Task"
