@@ -4,21 +4,39 @@ import List from './components/taskList';
 function App() {
   const[task,setTask] = useState("");
   const[taskList,setTaskList] = useState([]);
-  const handleSubmit=()=>{
-        setTaskList([...taskList,task])
+  const[editIndex,setEditIndex] = useState(null);
+  const handleSubmit=(newtask)=>{
+        if(editIndex != null){
+          const newList = taskList.map((item,index) =>{
+            if(index === editIndex){
+              return newtask
+            }
+            return item;
+          });
+          setEditIndex(null);
+          setTaskList(newList);
+        }
+        else{
+        setTaskList([...taskList,newtask])
+        }
         setTask("")
     } 
-  const handleEdit = () =>{
-      const changes = taskList.push();
+  const handleEdit = (editIndex) =>{
+        const tasktoEdit = taskList[editIndex]
+        setTask(tasktoEdit)
+        setEditIndex(editIndex)
     }
-    const handleDelete = () =>{
-      
-
+    const handleDelete = (indextoDelete) =>{
+      setTaskList(taskList.filter((item,index)=>{
+        if(index != indextoDelete){
+          return true;
+        }
+      }))
     }
   return (
     <div className="App">
-      <Task  handleSubmit = {handleSubmit} />
-      <List handleDelete = {handleDelete} handleEdit = {handleEdit} />
+      <Task  handleSubmit = {handleSubmit} task={task} setTask={setTask} />
+      <List taskList = {taskList} handleDelete = {handleDelete} handleEdit = {handleEdit} />
     </div>
   )
 }

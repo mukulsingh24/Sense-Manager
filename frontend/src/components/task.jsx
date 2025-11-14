@@ -1,7 +1,6 @@
 import { useState } from "react";
-
-function Task(handleSubmit){
-    const[task,setTask] = useState("");
+import { Row,Col } from "react-bootstrap";
+function Task({handleSubmit,task,setTask}){
     return(
         <div>
             <h1>Task Manager</h1>
@@ -9,7 +8,12 @@ function Task(handleSubmit){
                 onChange={(e)=> setTask(e.target.value)}
                 value={task}
             />
-            <button onClick={handleSubmit}>Submit the Task</button>
+            <button onClick=
+            {() =>{ 
+                    handleSubmit(task);
+                    setTask("")
+            }}
+            >Submit the Task</button>
             
         </div>
     )
