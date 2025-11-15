@@ -1,6 +1,15 @@
-user = {
-    username : 'abc',
-    userid : '1289',
-    email: 'abc@xyz.com',
-    password : 'hashed value',
-}
+const mongoose = require('mongoose')
+const newSchema = new mongoose.Schema({
+    email:{
+        type:String,
+        required: true,
+        unique : true,
+        lowercase:true
+    },
+    password:{
+        type:String,
+        required:true
+    }
+})
+
+module.exports = mongoose.model('User', newSchema)
