@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import Task from './components/task'
 import List from './components/taskList';
-import Nav1 from './components/navbar';
 function App() {
   const[task,setTask] = useState("");
   const[taskList,setTaskList] = useState([]);
@@ -35,8 +34,7 @@ function App() {
       }))
     }
   return (
-    <div className="App">
-      <Nav1 />  
+    <div className="App">    
       <Task  handleSubmit = {handleSubmit} task={task} setTask={setTask} />
       <List taskList = {taskList} handleDelete = {handleDelete} handleEdit = {handleEdit} />
     </div>

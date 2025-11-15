@@ -3,10 +3,11 @@ import { Row, Col, Button, Container, Form } from "react-bootstrap";
 
 function Task({ handleSubmit, task, setTask }) {
   return (
-    <Container fluid className="bg-gradient py-5" style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>
-      <Container className="py-4">
-        <Row className="justify-content-center">
-          <Col xs={12} sm={10} md={8} lg={6}>
+    <Container fluid className="vh-100 p-0">
+      <Row className="h-100 m-0">
+        <Col md={6} className="d-flex align-items-center justify-content-center" style={{ background: 'black' }}>
+
+          <Col xs={12} sm={10} md={10} lg={8}>
             <div className="bg-white rounded-lg shadow-lg p-4 p-md-5" style={{ border: '3px solid #667eea' }}>
               <h1 className="text-center mb-4 text-primary fw-bold">Welcome to the Task Manager</h1>
               
@@ -36,8 +37,11 @@ function Task({ handleSubmit, task, setTask }) {
               </Button>
             </div>
           </Col>
-        </Row>
-      </Container>
+        </Col>
+        <Col md={6}>
+        </Col>
+
+      </Row>
     </Container>
   );
 }
