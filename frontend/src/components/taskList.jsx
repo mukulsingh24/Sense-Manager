@@ -1,21 +1,18 @@
 import React from "react";
-// 1. Card is added to imports
-import { Row, Col, Button, Container, ListGroup, Card } from "react-bootstrap";
+import { Row, Col, Button, ListGroup, Card } from "react-bootstrap";
 
-// This component just renders the list.
-// App.jsx places it in the right-hand column.
 function List({ taskList, handleEdit, handleDelete }) {
   return (
-    // 2. Use a simple Container for padding, not a fluid one.
-    <Container className="py-5">
+    <div className="py-5 px-4">
+      
       <Row className="justify-content-center mb-4">
-        <Col xs={12} sm={10} md={10} lg={10}> {/* Made wider for the column */}
+        <Col xs={12} lg={10}>
           <h1 className="text-center text-primary fw-bold mb-4">Tasks List</h1>
         </Col>
       </Row>
       
       <Row className="justify-content-center">
-        <Col xs={12} sm={10} md={10} lg={10}> {/* Made wider for the column */}
+        <Col xs={12} lg={10}>
           {taskList.length > 0 ? (
             <Card className="shadow-lg" style={{ border: '3px solid #667eea' }}>
               <Card.Body className="p-0">
@@ -59,7 +56,7 @@ function List({ taskList, handleEdit, handleDelete }) {
           )}
         </Col>
       </Row>
-    </Container>
+    </div>
   );
 }
 
