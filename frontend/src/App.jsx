@@ -60,7 +60,7 @@ function App() {
         <Col
           md={6}
           className="d-flex align-items-center justify-content-center"
-          style={{ background: "#1a1a2e" }} // Dark indigo background
+          style={{ background: "#1a1a2e" }}
         >
           <Task
             handleSubmit={handleSubmit}
@@ -73,7 +73,7 @@ function App() {
         <Col
           md={6}
           className="bg-light"
-          style={{ overflowY: "auto", maxHeight: "100vh" }} // Makes just this column scrollable
+          style={{ overflowY: "auto", maxHeight: "100vh" }}
         >
           <List
             taskList={taskList}
