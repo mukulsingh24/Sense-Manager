@@ -1,36 +1,36 @@
 import { useState } from 'react';
 import { Row, Col, Button, Container, Form, Card, Alert } from "react-bootstrap";
-import axios from 'axios'
-import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { useNavigate, Link } from 'react-router-dom';
 
-function Login({onLogin}){
-        const [email,setEmail] = useState("")
-        const[password,setPassword] = useState("")
-        const[error,setError] = useState("")
-        const navigate = useNavigate();
+function Login({ onLogin }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-        const handleLogin = async() =>{
-            setError("")
-            try{
-                const response = await axios.post('http://localhost:5000/api/auth/login',{
-                    email: email,
-                    password:password
-                })
-                console.log("Login Successful")
-                localStorage.setItem('token',response.data.token);
-                onLogin();
-                navigate("/")
-            }
-            catch(error){
-                console.error(err);
-      if (err.response && err.response.data && err.response.data.message) {
-        setError(err.response.data.message);
+  const handleLogin = async () => {
+    setError("");
+    try {
+      const response = await axios.post('http://localhost:5000/api/auth/login', {
+        email: email,
+        password: password
+      });
+      console.log("Login Successful");
+      localStorage.setItem('token', response.data.token);
+      onLogin();
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+      if (error.response && error.response.data && error.response.data.message) {
+        setError(error.response.data.message);
       } else {
         setError("Login failed. Please try again.");
       }
     }
-    }
-    return(
+  };
+
+  return (
     <Container fluid className="vh-100 d-flex align-items-center justify-content-center" style={{ background: '#f8f9fa' }}>
       <Row className="justify-content-center w-100">
         <Col md={6} lg={4}>
@@ -71,13 +71,13 @@ function Login({onLogin}){
             </Button>
             
             <p className="text-center mt-3">
-              Don't have an account? <a href="/register">Sign Up</a>
+              Don't have an account? <Link to="/register">Sign Up</Link>
             </p>
           </Card>
         </Col>
       </Row>
     </Container>
-    )
+  );
 }
 
-export default Login
+export default Login;

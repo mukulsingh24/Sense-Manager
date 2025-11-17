@@ -19,12 +19,12 @@ function List({ taskList, handleEdit, handleDelete }) {
                 <ListGroup variant="flush">
                   {taskList.map((item, index) => (
                     <ListGroup.Item
-                      key={index}
+                      key={item._id}
                       className="d-flex justify-content-between align-items-center flex-wrap gap-2 p-3"
                       style={{ backgroundColor: '#fff', borderBottom: '2px solid #e0e0e0' }}
                     >
                       <span className="text-start flex-grow-1 fw-500 text-dark" style={{ wordBreak: 'break-word' }}>
-                        {item}
+                        {item.title}
                       </span>
                       <div className="d-flex gap-2 flex-wrap">
                         <Button
