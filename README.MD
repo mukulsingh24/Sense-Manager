@@ -45,43 +45,6 @@ A full-stack **MERN (MongoDB, Express, React, Node.js)** application that allows
 
 ---
 
-TASK_MANAGER/
-├── backend/
-│   ├── controllers/
-│   │   ├── authController.js
-│   │   └── taskController.js
-│   ├── middleware/
-│   │   └── authmiddleware.js
-│   ├── models/
-│   │   ├── task.js
-│   │   └── user.js
-│   ├── routes/
-│   │   ├── authRoutes.js
-│   │   └── taskRoutes.js
-│   ├── index.js
-│   ├── package-lock.json
-│   └── package.json
-│
-└── frontend/
-    ├── public/
-    ├── src/
-    │   ├── components/
-    │   │   ├── task.jsx
-    │   │   └── taskList.jsx
-    │   ├── pages/
-    │   │   ├── login.jsx
-    │   │   └── register.jsx
-    │   ├── App.jsx
-    │   ├── index.css
-    │   └── main.jsx
-    ├── .gitignore
-    ├── eslint.config.js
-    ├── index.html
-    ├── package-lock.json
-    ├── package.json
-    └── vite.config.js
-
-
 Task Enhancements: 
 
 Add priorities (e.g., Low, Medium, High). 
