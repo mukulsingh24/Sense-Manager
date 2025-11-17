@@ -1,116 +1,49 @@
-MERN Stack Task Manager
+# 📌 MERN Stack Task Manager
 
-This is a full-stack MERN (MongoDB, Express, React, Node.js) application that allows users to register, log in, and securely manage their personal tasks.
+A full-stack **MERN (MongoDB, Express, React, Node.js)** application that allows users to register, log in, and securely manage their personal tasks. It includes a complete authentication system using **JWT**, protected **CRUD** task APIs, and a responsive React frontend built with **React-Bootstrap**.
 
-It features a complete authentication system using JSON Web Tokens (JWT) and a protected API for all task-related (CRUD) operations. The frontend is built with React and React-Bootstrap, offering a responsive, split-screen layout to add and view tasks side-by-side.
+---
 
-✨ Features
+## ✨ Features
 
-User Authentication: Secure user registration and login system.
+### 🔐 Authentication & Security
+- Secure user registration and login
+- JWT-based authentication for protected task routes
+- Password hashing with bcryptjs
+- Custom auth middleware for route protection
 
-JWT Security: Protected backend API routes using JWT and custom middleware.
+### 📝 Task Management (CRUD)
+- **Create** → Add new tasks  
+- **Read** → View all tasks for the logged-in user  
+- **Update** → Edit task details  
+- **Delete** → Remove unwanted or completed tasks  
 
-Password Hashing: User passwords are securely hashed using bcryptjs.
+### 🎨 UI / UX
+- Responsive layout using React-Bootstrap  
+- Split-screen task entry & viewing interface  
+- Instant UI updates after API responses  
 
-Full CRUD Functionality:
+---
 
-Create: Add new tasks.
+## 🛠️ Tech Stack
 
-Read: Get all tasks for the logged-in user.
+### 🔹 Frontend
+- React (Vite)
+- React Router (react-router-dom)
+- React-Bootstrap
+- Axios
+- CSS
 
-Update: Edit existing tasks.
+### 🔹 Backend
+- Node.js
+- Express.js
+- MongoDB + Mongoose
+- JSON Web Token (JWT)
+- bcryptjs
+- dotenv
+- CORS
 
-Delete: Remove completed or unwanted tasks.
-
-Responsive UI: A clean, modern interface built with React-Bootstrap.
-
-Real-time Updates: The frontend state is updated immediately after successful API calls.
-
-🛠️ Tech Stack
-
-Frontend
-
-React (with Vite)
-
-React Router (react-router-dom) for page navigation
-
-React-Bootstrap for UI components
-
-Axios for making API requests
-
-Backend
-
-Node.js
-
-Express for the server framework
-
-MongoDB (with Mongoose) as the database
-
-JSON Web Token (JWT) for authentication
-
-bcryptjs for password hashing
-
-dotenv for environment variable management
-
-CORS for cross-origin requests
-
-🚀 Getting Started
-
-To run this project locally, you will need to set up both the backend and frontend.
-
-Prerequisites
-
-Node.js
-
-A MongoDB database (local or a free MongoDB Atlas URI)
-
-1. Backend Setup
-
-Navigate to the backend folder:
-
-cd backend
-
-
-Install the dependencies:
-
-npm install
-
-
-Create an environment file (e.g., mong.env) in the backend root.
-
-Add your database connection string and JWT secret:
-
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_super_secret_key_123
-
-
-Start the backend server:
-
-node index.js
-
-
-(The server will run on http://localhost:5000)
-
-2. Frontend Setup
-
-Open a new terminal and navigate to the frontend folder:
-
-cd frontend
-
-
-Install the dependencies:
-
-npm install
-
-
-Start the frontend development server:
-
-npm run dev
-
-
-(The app will open on http://localhost:5173 or a similar port)
-
-📂 Project Structure
+---
 
 TASK_MANAGER/
 ├── backend/
@@ -122,15 +55,14 @@ TASK_MANAGER/
 │   ├── models/
 │   │   ├── task.js
 │   │   └── user.js
-│   ├── node_modules/
 │   ├── routes/
 │   │   ├── authRoutes.js
 │   │   └── taskRoutes.js
 │   ├── index.js
 │   ├── package-lock.json
 │   └── package.json
+│
 └── frontend/
-    ├── node_modules/
     ├── public/
     ├── src/
     │   ├── components/
@@ -150,30 +82,10 @@ TASK_MANAGER/
     └── vite.config.js
 
 
-🔮 Future Features
+Task Enhancements: 
 
-This project is a solid foundation. Here are some features that could be added next:
-
-Password Reset: Implement a "Forgot Password" flow that sends a secure email link.
-
-Email Verification: Require users to verify their email address upon registration.
-
-OAuth 2.0: Add "Login with Google" / "Login with GitHub" functionality.
-
-Task Enhancements:
-
-Add priorities (e.g., Low, Medium, High).
-
-Add due dates with a date picker.
-
-Add categories or tags.
-
-Profile Page: A secure page where users can update their email or password.
-
-Advanced UI/UX:
-
-Implement drag-and-drop to reorder tasks.
-
-Add animations for a more "modern" feel.
-
-Add a dark mode toggle.
+Add priorities (e.g., Low, Medium, High). 
+Add due dates with a date picker. Add categories or tags. 
+Profile Page: A secure page where users can update their email or password. 
+Advanced UI/UX: Implement drag-and-drop to reorder tasks. 
+Add animations for a more "modern" feel. Add a dark mode toggle."
