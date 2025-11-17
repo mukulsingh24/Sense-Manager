@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Row, Col, Button, Container, Form, Card, Alert } from "react-bootstrap";
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
+import api from '../api'
 
 function Login({ onLogin }) {
   const [email, setEmail] = useState("");
@@ -12,7 +13,7 @@ function Login({ onLogin }) {
   const handleLogin = async () => {
     setError("");
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', {
+      const response = await api.post('/auth/login', {
         email: email,
         password: password
       });

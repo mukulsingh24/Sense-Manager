@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Row, Col, Button, Container, Form, Card, Alert } from "react-bootstrap";
-import axios from 'axios';
+import api from '../api'
+
 
 function Register(){
     const[email,setEmail] = useState("")
@@ -16,7 +17,7 @@ function Register(){
             return;
         }
         try{
-            const response = await axios.post("http://localhost:5000/api/auth/register",{
+            const response = await api.post('/auth/register',{
                 email:email,
                 password:password
             })
@@ -78,7 +79,7 @@ function Register(){
             </Button>
             
             <p className="text-center mt-3">
-              Already have an account? <a href="/login">Log In</a>
+              Already have an account? <Link to="/login">Log In</Link>
             </p>
           </Card>
         </Col>

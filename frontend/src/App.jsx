@@ -6,21 +6,7 @@ import Register from './pages/register';
 import Task from './components/task';
 import List from './components/taskList';
 import { Container, Row, Col, Alert, Button } from 'react-bootstrap';
-
-
-const api = axios.create({
-  baseURL: 'http://localhost:5000/api'
-});
-
-api.interceptors.request.use(config => {
-  const token = localStorage.getItem('token');
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  }
-  return config;
-}, error => {
-  return Promise.reject(error);
-});
+import api from './api'
 
 function TaskManager({ onLogout }) {
   const [task, setTask] = useState("");
