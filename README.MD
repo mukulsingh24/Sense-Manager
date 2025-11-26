@@ -45,6 +45,7 @@ A full-stack **MERN (MongoDB, Express, React, Node.js)** application that allows
 
 ---
 
+<<<<<<< HEAD
 Sense-Manager/
 ├── backend/
 │   ├── controllers/
@@ -82,6 +83,8 @@ Sense-Manager/
     └── vite.config.js
 
 
+=======
+>>>>>>> db16a212eea7522d6d3325e882123c5adfc2c665
 Task Enhancements: 
 
 Add priorities (e.g., Low, Medium, High). 
