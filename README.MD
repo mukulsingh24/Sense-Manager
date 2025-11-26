@@ -1,4 +1,4 @@
-# 📌 MERN Stack Task Manager
+# 📌 Sense-Manager
 
 A full-stack **MERN (MongoDB, Express, React, Node.js)** application that allows users to register, log in, and securely manage their personal tasks. It includes a complete authentication system using **JWT**, protected **CRUD** task APIs, and a responsive React frontend built with **React-Bootstrap**.
 
@@ -45,7 +45,7 @@ A full-stack **MERN (MongoDB, Express, React, Node.js)** application that allows
 
 ---
 
-TASK_MANAGER/
+Sense-Manager/
 ├── backend/
 │   ├── controllers/
 │   │   ├── authController.js
