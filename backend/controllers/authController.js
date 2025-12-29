@@ -7,6 +7,7 @@ const Register = async (req, res) => {
     res.status(200).json({ message: "User Exists" });
   } else {
     const newUser = new User({
+      username: req.body.username,
       email: req.body.email,
       password: req.body.password,
     });
@@ -24,7 +25,7 @@ const Login = async (req, res) => {
       });
       res
         .status(200)
-        .json({ token, userId: user._id, message: "Login Successful" });
+        .json({ token, userId: user._id, username: user.username, message: "Login Successful" });
     } else {
       res.status(200).json({ message: "Invalid Credentails" });
     }

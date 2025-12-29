@@ -5,6 +5,7 @@ import api from '../api'
 
 
 function Register(){
+    const[username,setUsername] = useState("")
     const[email,setEmail] = useState("")
     const[password,setPassword] = useState("")
     const[error,setError] = useState("")
@@ -13,17 +14,19 @@ function Register(){
     const handleRegister = async() =>{
         setError("")
         setSuccess("")
-        if(!email || !password){
-            setError("Enter valid Email and Password")
+        if(!username || !email || !password){
+            setError("Enter valid Username, Email and Password")
             return;
         }
         try{
             const response = await api.post('/auth/register',{
+                username:username,
                 email:email,
                 password:password
             })
             console.log("Registration Successfull",response.data)
             setSuccess("Registation Successfull")
+            setUsername("")
             setEmail("")
             setPassword("")
         }
@@ -47,6 +50,17 @@ function Register(){
             {/* Show error or success messages */}
             {error && <Alert variant="danger">{error}</Alert>}
             {success && <Alert variant="success">{success}</Alert>}
+
+            <Form.Group className="mb-3">
+              <Form.Label>Username</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                size="lg"
+              />
+            </Form.Group>
 
             <Form.Group className="mb-3">
               <Form.Label>Email Address</Form.Label>

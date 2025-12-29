@@ -19,6 +19,7 @@ function Login({ onLogin }) {
       });
       console.log("Login Successful");
       localStorage.setItem('token', response.data.token);
+      localStorage.setItem('username', response.data.username);
       onLogin();
       navigate("/");
     } catch (error) {

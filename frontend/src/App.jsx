@@ -13,6 +13,7 @@ function TaskManager({ onLogout }) {
   const [taskList, setTaskList] = useState([]); 
   const [editTask, setEditTask] = useState(null); 
   const [message, setMessage] = useState(""); 
+  const [username, setUsername] = useState(localStorage.getItem('username') || 'User');
 
   const showMessage = (text, variant = "success") => {
     setMessage({ text, variant });
@@ -90,12 +91,15 @@ function TaskManager({ onLogout }) {
           >
             Logout
           </Button>
-          <Task 
-            handleSubmit={handleSubmit} 
-            task={task} 
-            setTask={setTask} 
-            editIndex={editTask ? true : null} 
-          />
+          <div className="text-center w-100">
+            <h2 className="text-white mb-4">Welcome back, {username}!</h2>
+            <Task 
+              handleSubmit={handleSubmit} 
+              task={task} 
+              setTask={setTask} 
+              editIndex={editTask ? true : null} 
+            />
+          </div>
         </Col>
         
         <Col md={6} className="bg-light" style={{ overflowY: 'auto', maxHeight: '100vh' }}>
@@ -127,6 +131,7 @@ function App() {
 
   const handleLogout = () => {
     localStorage.removeItem('token'); 
+    localStorage.removeItem('username');
     setIsLoggedIn(false);
   };
 
