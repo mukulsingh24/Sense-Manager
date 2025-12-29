@@ -92,7 +92,9 @@ function TaskManager({ onLogout }) {
             Logout
           </Button>
           <div className="text-center w-100">
-            <h2 className="text-white mb-4">Welcome back, {username}!</h2>
+            <h1 className="display-4 fw-bold text-white mb-2">Welcome Back!</h1>
+            <h2 className="text-info mb-4">{username}</h2>
+            <p className="text-white-50 mb-5">Here are your tasks for today</p>
             <Task 
               handleSubmit={handleSubmit} 
               task={task} 
