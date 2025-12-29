@@ -19,7 +19,7 @@ function Login({ onLogin }) {
       });
       console.log("Login Successful");
       localStorage.setItem('token', response.data.token);
-      localStorage.setItem('username', response.data.username);
+      localStorage.setItem('username', response.data.username || 'User');
       onLogin();
       navigate("/");
     } catch (error) {

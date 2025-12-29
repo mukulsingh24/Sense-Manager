@@ -23,9 +23,10 @@ const Login = async (req, res) => {
       const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
         expiresIn: "1h",
       });
+      const username = user.username || user.email.split('@')[0];
       res
         .status(200)
-        .json({ token, userId: user._id, username: user.username, message: "Login Successful" });
+        .json({ token, userId: user._id, username: username, message: "Login Successful" });
     } else {
       res.status(200).json({ message: "Invalid Credentails" });
     }
