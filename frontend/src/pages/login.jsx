@@ -3,6 +3,8 @@ import { Row, Col, Button, Container, Form, Card, Alert } from "react-bootstrap"
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import api from '../api'
+import {GoogleLogin} from '@react-oauth/google';
+
 
 function Login({ onLogin }) {
   const [email, setEmail] = useState("");
@@ -32,6 +34,22 @@ function Login({ onLogin }) {
     }
   };
 
+  const handleGoogleLogin = async(credentialResponse) => {
+    setError("");
+    try {
+      const response = await api.post('/auth/google-login', {
+        token: credentialResponse.credential
+      });
+      console.log("Google Login Successful");
+      localStorage.setItem('token', response.data.token);
+      localStorage.setItem('username', response.data.username || 'User');
+      onLogin();
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+      setError("Google Login failed. Please try again.");
+    }
+  };
   return (
     <Container fluid className="vh-100 d-flex align-items-center justify-content-center" style={{ background: '#f8f9fa' }}>
       <Row className="justify-content-center w-100">
@@ -71,7 +89,15 @@ function Login({ onLogin }) {
             >
               Login
             </Button>
-            
+            <div className="d-flex justify-content-center mb-3 pt-5">
+              <GoogleLogin
+                onSuccess={handleGoogleLogin}
+                onError={() => setError("Google Login Failed")}
+                useOneTap
+                theme="filled_blue"
+                shape="pill"
+              />
+            </div>
             <p className="text-center mt-3">
               Don't have an account? <Link to="/register">Sign Up</Link>
             </p>

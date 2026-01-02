@@ -46,7 +46,6 @@ function Register(){
           <Card className="shadow-lg p-4">
             <h1 className="text-center mb-4 text-primary fw-bold">Sign Up</h1>
             
-            {/* Show error or success messages */}
             {error && <Alert variant="danger">{error}</Alert>}
             {success && <Alert variant="success">{success}</Alert>}
 
