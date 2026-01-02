@@ -35,4 +35,24 @@ const Login = async (req, res) => {
   }
 };
 
+const GoogleLogin = async (req, res) => {
+  const { email, googleId, username } = req.body;
+  let user = await User.findOne({ email: email });
+  if(user){
+    const token = jwt.sign({id: user._id}, process.env.JWT_SECRET, {expiresIn: '1h'});
+    const name = user.username || user.email.split('@')[0];
+    res.status(200).json({token, userId: user._id, username: name, message: "Login Successful"});
+  }
+  else{
+    const newUser = new User({
+      username: username || email.split('@')[0],
+      email: email,
+      googleId: googleId
+    });
+    await newUser.save();
+    const token = jwt.sign({id: newUser._id}, process.env.JWT_SECRET, {expiresIn: '1h'});
+    res.status(200).json({token, userId: newUser._id, username: newUser.username, message: "Registration and Login Successful"});
+  }
+}
+
 module.exports = { Register, Login };
