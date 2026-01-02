@@ -43,48 +43,7 @@ A full-stack **MERN (MongoDB, Express, React, Node.js)** application that allows
 - dotenv
 - CORS
 
----
-
-<<<<<<< HEAD
-Sense-Manager/
-├── backend/
-│   ├── controllers/
-│   │   ├── authController.js
-│   │   └── taskController.js
-│   ├── middleware/
-│   │   └── authmiddleware.js
-│   ├── models/
-│   │   ├── task.js
-│   │   └── user.js
-│   ├── routes/
-│   │   ├── authRoutes.js
-│   │   └── taskRoutes.js
-│   ├── index.js
-│   ├── package-lock.json
-│   └── package.json
-│
-└── frontend/
-    ├── public/
-    ├── src/
-    │   ├── components/
-    │   │   ├── task.jsx
-    │   │   └── taskList.jsx
-    │   ├── pages/
-    │   │   ├── login.jsx
-    │   │   └── register.jsx
-    │   ├── App.jsx
-    │   ├── index.css
-    │   └── main.jsx
-    ├── .gitignore
-    ├── eslint.config.js
-    ├── index.html
-    ├── package-lock.json
-    ├── package.json
-    └── vite.config.js
-
-
 =======
->>>>>>> db16a212eea7522d6d3325e882123c5adfc2c665
 Task Enhancements: 
 
 Add priorities (e.g., Low, Medium, High). 

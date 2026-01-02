@@ -3,7 +3,6 @@ import { Row, Col, Button, Container, Form, Card, Alert } from "react-bootstrap"
 import { Link } from 'react-router-dom';
 import api from '../api'
 
-
 function Register(){
     const[username,setUsername] = useState("")
     const[email,setEmail] = useState("")
