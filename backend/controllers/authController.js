@@ -32,10 +32,10 @@ const Login = async (req, res) => {
         .status(200)
         .json({ token, userId: user._id, username: username, message: "Login Successful" });
     } else {
-      res.status(200).json({ message: "Invalid Credentails" });
+      res.status(400).json({ message: "Invalid Credentails" });
     }
   } else {
-    res.status(200).json({ message: "User Doesnt Exists" });
+    res.status(404).json({ message: "User Doesnt Exists" });
   }
 };
 
