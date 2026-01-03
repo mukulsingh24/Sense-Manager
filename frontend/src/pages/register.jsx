@@ -3,6 +3,7 @@ import { Row, Col, Button, Container, Form, Card, Alert } from "react-bootstrap"
 import { Link, useNavigate } from 'react-router-dom';
 import api from '../api'
 import { GoogleLogin } from '@react-oauth/google';
+import { FaUser, FaEnvelope, FaLock } from 'react-icons/fa';
 
 function Register({ onLogin }){
     const[username,setUsername] = useState("")
@@ -59,80 +60,85 @@ function Register({ onLogin }){
 
     }
     return (
-    <Container fluid className="vh-100 d-flex align-items-center justify-content-center" style={{ background: '#f8f9fa' }}>
-      <Row className="justify-content-center w-100">
-        <Col md={6} lg={4}>
-          <Card className="shadow-lg p-4">
-            <h1 className="text-center mb-4 text-primary fw-bold">Sign Up</h1>
-            
-            {error && <Alert variant="danger">{error}</Alert>}
-            {success && <Alert variant="success">{success}</Alert>}
+    <div className="auth-container">
+      <Container>
+        <Row className="justify-content-center">
+          <Col xs={11} sm={10} md={8} lg={6} xl={5}>
+            <Card className="auth-card animate-fade-in p-4 p-md-5" style={{ minHeight: '550px' }}>
+              <div className="auth-header">
+                <h2 className="auth-title">Create Account</h2>
+                <p className="auth-subtitle">Join us and start managing your tasks</p>
+              </div>
+              
+              {error && <Alert variant="danger" className="text-center border-0 shadow-sm">{error}</Alert>}
+              {success && <Alert variant="success" className="text-center border-0 shadow-sm">{success}</Alert>}
 
-            <Form.Group className="mb-3">
-              <Form.Label>Username</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                size="lg"
-              />
-            </Form.Group>
+              <Form>
+                <div className="custom-input-group">
+                  <FaUser className="input-icon" />
+                  <Form.Control
+                    type="text"
+                    placeholder="Username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    className="custom-input"
+                  />
+                </div>
 
-            <Form.Group className="mb-3">
-              <Form.Label>Email Address</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder="Enter email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                size="lg"
-              />
-            </Form.Group>
-            
-            <Form.Group className="mb-3">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="Enter password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                size="lg"
-              />
-            </Form.Group>
-            
-            <Button
-              variant="primary"
-              onClick={handleRegister}
-              className="w-100 fw-bold mt-2"
-              size="lg"
-            >
-              Create Account
-            </Button>
+                <div className="custom-input-group">
+                  <FaEnvelope className="input-icon" />
+                  <Form.Control
+                    type="email"
+                    placeholder="Email Address"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="custom-input"
+                  />
+                </div>
+                
+                <div className="custom-input-group">
+                  <FaLock className="input-icon" />
+                  <Form.Control
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="custom-input"
+                  />
+                </div>
+                
+                <Button
+                  onClick={handleRegister}
+                  className="w-100 auth-btn mt-3"
+                >
+                  Sign Up
+                </Button>
+              </Form>
 
-            <div className="d-flex align-items-center my-3">
-              <hr className="flex-grow-1" />
-              <span className="mx-2 text-muted">OR</span>
-              <hr className="flex-grow-1" />
-            </div>
+              <div className="divider">OR</div>
 
-            <div className="d-flex justify-content-center mb-3">
-              <GoogleLogin
-                onSuccess={handleGoogleLogin}
-                onError={() => {
-                  console.log('Login Failed');
-                  setError("Google Login Failed");
-                }}
-              />
-            </div>
-            
-            <p className="text-center mt-3">
-              Already have an account? <Link to="/login">Log In</Link>
-            </p>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+              <div className="google-btn-wrapper">
+                <GoogleLogin
+                  onSuccess={handleGoogleLogin}
+                  onError={() => {
+                    console.log('Login Failed');
+                    setError("Google Login Failed");
+                  }}
+                  useOneTap
+                  theme="outline"
+                  shape="pill"
+                  width="100%"
+                />
+              </div>
+              
+              <p className="text-center mt-4 mb-0 text-muted">
+                Already have an account? <Link to="/login" className="auth-link">Log In</Link>
+              </p>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 }
 
