@@ -1,6 +1,10 @@
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const { OAuth2Client } = require('google-auth-library');
+
+const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
+
 const Register = async (req, res) => {
   // 200 == successfull
   if (await User.findOne({ email: req.body.email })) {
@@ -36,23 +40,34 @@ const Login = async (req, res) => {
 };
 
 const GoogleLogin = async (req, res) => {
-  const { email, googleId, username } = req.body;
-  let user = await User.findOne({ email: email });
-  if(user){
-    const token = jwt.sign({id: user._id}, process.env.JWT_SECRET, {expiresIn: '1h'});
-    const name = user.username || user.email.split('@')[0];
-    res.status(200).json({token, userId: user._id, username: name, message: "Login Successful"});
-  }
-  else{
-    const newUser = new User({
-      username: username || email.split('@')[0],
-      email: email,
-      googleId: googleId
+  const { token } = req.body;
+  try {
+    const ticket = await client.verifyIdToken({
+      idToken: token,
+      audience: process.env.GOOGLE_CLIENT_ID,
     });
-    await newUser.save();
-    const token = jwt.sign({id: newUser._id}, process.env.JWT_SECRET, {expiresIn: '1h'});
-    res.status(200).json({token, userId: newUser._id, username: newUser.username, message: "Registration and Login Successful"});
+    const { email, sub: googleId, name: username } = ticket.getPayload();
+
+    let user = await User.findOne({ email: email });
+    if(user){
+      const token = jwt.sign({id: user._id}, process.env.JWT_SECRET, {expiresIn: '1h'});
+      const name = user.username || user.email.split('@')[0];
+      res.status(200).json({token, userId: user._id, username: name, message: "Login Successful"});
+    }
+    else{
+      const newUser = new User({
+        username: username || email.split('@')[0],
+        email: email,
+        googleId: googleId
+      });
+      await newUser.save();
+      const token = jwt.sign({id: newUser._id}, process.env.JWT_SECRET, {expiresIn: '1h'});
+      res.status(200).json({token, userId: newUser._id, username: newUser.username, message: "Registration and Login Successful"});
+    }
+  } catch (error) {
+    console.error("Google Login Error:", error);
+    res.status(400).json({ message: "Google Login Failed" });
   }
 }
 
-module.exports = { Register, Login };
+module.exports = { Register, Login, GoogleLogin };
