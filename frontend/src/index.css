@@ -22,7 +22,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Animated Background */
 .auth-container {
   min-height: 100vh;
   display: flex;
@@ -42,7 +41,6 @@ body {
   100% { background-position: 0% 50%; }
 }
 
-/* Floating Orbs */
 .auth-container::before,
 .auth-container::after {
   content: '';
@@ -75,7 +73,6 @@ body {
   50% { transform: translateY(-30px) scale(1.05); }
 }
 
-/* Liquid Glass Card */
 .auth-card {
   background: var(--glass-bg);
   backdrop-filter: blur(20px);
@@ -185,7 +182,6 @@ body {
   transform: translateY(-50%) scale(1.1);
 }
 
-/* Glowing Button */
 .auth-btn {
   height: 56px;
   border-radius: 14px !important;
@@ -304,7 +300,6 @@ body {
   border-radius: 12px !important;
 }
 
-/* Text colors for dark theme */
 .text-muted {
   color: rgba(255, 255, 255, 0.6) !important;
 }
@@ -325,7 +320,6 @@ body {
   animation: fadeIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
-/* Extra floating elements */
 .auth-container .floating-shape {
   position: absolute;
   border-radius: 50%;
@@ -341,7 +335,6 @@ body {
   75% { transform: translate(20px, 10px) rotate(270deg); }
 }
 
-/* Animation */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
