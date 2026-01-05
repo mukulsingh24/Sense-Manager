@@ -137,6 +137,29 @@ function App() {
     setIsLoggedIn(false);
   };
 
+  useEffect(() => {
+    const events = ['mousemove', 'click', 'keypress'];
+    
+    const updateActivity = () => {
+      localStorage.setItem('lastActivity', Date.now());
+    };
+
+    const checkInactivity = () => {
+      const lastActivity = localStorage.getItem('lastActivity');
+      if (lastActivity && Date.now() - lastActivity > 10 * 60 * 1000) {
+        handleLogout();
+      }
+    };
+
+    events.forEach(event => window.addEventListener(event, updateActivity));
+    const interval = setInterval(checkInactivity, 30000);
+
+    return () => {
+      events.forEach(event => window.removeEventListener(event, updateActivity));
+      clearInterval(interval);
+    };
+  }, []);
+
   return (
     <Routes>
       <Route 
