@@ -150,7 +150,6 @@ function App() {
         handleLogout();
       }
     };
-
     events.forEach(event => window.addEventListener(event, updateActivity));
     const interval = setInterval(checkInactivity, 30000);
 
