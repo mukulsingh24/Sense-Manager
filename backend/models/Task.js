@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-
 const TaskSchema = new mongoose.Schema({
   title: {
     type: String,
@@ -12,5 +11,4 @@ const TaskSchema = new mongoose.Schema({
     required: true,
   },
 });
-
 module.exports = mongoose.model('Task', TaskSchema);
